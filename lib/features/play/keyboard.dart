@@ -161,6 +161,9 @@ class _CandyKey extends StatelessWidget {
         final depth = math.min(12.0, box.maxHeight * 0.04);
         final press = down ? depth * 0.75 : 0.0;
         final emojiSize = math.min(box.maxWidth * (fewKeys ? 0.62 : 0.66), box.maxHeight * 0.3);
+        // Portrait tablets (Android 16 ignores our landscape request on large
+        // screens) give very tall keys: lift the animal towards the middle.
+        final tall = box.maxHeight > box.maxWidth * 3;
         return Stack(
           clipBehavior: Clip.none,
           children: [
@@ -221,7 +224,7 @@ class _CandyKey extends StatelessWidget {
                         offset: Offset(0, 6 * wave),
                         child: Text('👇', style: TextStyle(fontSize: emojiSize * 0.45)),
                       ),
-                    const Spacer(),
+                    Spacer(flex: tall ? 3 : 1),
                     if (face.emoji != null)
                       Transform.rotate(
                         angle: b * 0.25,
@@ -245,7 +248,7 @@ class _CandyKey extends StatelessWidget {
                           ),
                         ),
                       ),
-                    SizedBox(height: box.maxHeight * 0.07),
+                    if (tall) const Spacer(flex: 2) else SizedBox(height: box.maxHeight * 0.07),
                   ],
                 ),
               ),

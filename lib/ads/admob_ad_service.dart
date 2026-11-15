@@ -24,8 +24,9 @@ class AdUnits {
 
 /// HomiLabs test phones (hashed device ids from the SDK's logcat hint). They get
 /// labelled test ads even in release builds, so our own testing never counts as
-/// real traffic. Oppo Reno14 F (CPH2743), added 2026-11-09.
-const testDeviceIds = ['E41E9C57CF74F7488344578B3BD4DB0F'];
+/// real traffic. Oppo Reno14 F (CPH2743), added 2026-11-09; Galaxy Tab S9 FE
+/// (SM-X510), added 2026-11-15.
+const testDeviceIds = ['E41E9C57CF74F7488344578B3BD4DB0F', '84F0E2335747328B9CBDB93C0D43F4FB'];
 
 /// AdMob behind [AdService], set up for an app whose audience is young children
 /// (Google Play Families policy):
@@ -38,22 +39,29 @@ const testDeviceIds = ['E41E9C57CF74F7488344578B3BD4DB0F'];
 class AdMobAdService implements AdService {
   AdMobAdService();
 
-  final Completer<bool> _ready = Completer<bool>();
-  bool _started = false;
+  Future<bool>? _attempt;
+  bool _consentFailed = false;
+  bool _sdkStarted = false;
   bool _canRequest = false;
 
-  /// Completes with whether ads may be requested, once [init] has finished.
-  Future<bool> get ready => _ready.future;
+  /// Completes with whether ads may be requested. If the last start-up could not
+  /// reach Google's consent service (offline, or the phone was dozing at launch),
+  /// this tries again, so the Grown-ups banner can still appear later.
+  Future<bool> get ready {
+    if (_consentFailed && !_canRequest) _attempt = null;
+    return _attempt ??= _start();
+  }
 
   @override
   bool get enabled => _canRequest;
 
   @override
-  Future<void> init() async {
-    if (_started) return;
-    _started = true;
+  Future<void> init() => ready;
+
+  Future<bool> _start() async {
+    _consentFailed = false;
     try {
-      if (!AdUnits.anyConfigured) return; // release build without real ids: stay ad-free
+      if (!AdUnits.anyConfigured) return false; // release build without real ids: stay ad-free
       final done = Completer<void>();
       ConsentInformation.instance.requestConsentInfoUpdate(
         ConsentRequestParameters(tagForUnderAgeOfConsent: true),
@@ -63,13 +71,14 @@ class AdMobAdService implements AdService {
         },
         (error) {
           debugPrint('[ads] consent update failed: ${error.message}');
+          _consentFailed = true;
           if (!done.isCompleted) done.complete();
         },
       );
       await done.future.timeout(const Duration(seconds: 20), onTimeout: () {});
       _canRequest = await ConsentInformation.instance.canRequestAds();
       debugPrint('[ads] consent done, canRequestAds=$_canRequest');
-      if (!_canRequest) return;
+      if (!_canRequest || _sdkStarted) return _canRequest;
       await MobileAds.instance.updateRequestConfiguration(
         RequestConfiguration(
           maxAdContentRating: MaxAdContentRating.g,
@@ -78,13 +87,14 @@ class AdMobAdService implements AdService {
         ),
       );
       final status = await MobileAds.instance.initialize();
+      _sdkStarted = true;
       debugPrint('[ads] SDK started: ${status.adapterStatuses.length} adapters');
     } on Object catch (e) {
       debugPrint('[ads] init failed: $e');
       _canRequest = false;
-    } finally {
-      if (!_ready.isCompleted) _ready.complete(_canRequest);
+      _consentFailed = true;
     }
+    return _canRequest;
   }
 
   @override
@@ -109,7 +119,7 @@ class AdMobAdService implements AdService {
   @override
   Widget? banner(AdPlacement placement) {
     final id = AdUnits.banner;
-    if (id == null || (_ready.isCompleted && !_canRequest)) return null;
+    if (id == null) return null;
     return _BannerSlot(service: this, adUnitId: id);
   }
 }

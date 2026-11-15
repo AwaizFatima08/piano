@@ -43,9 +43,9 @@ done
 # Families policy: an app for children must not carry the Advertising ID permission.
 if grep -q "com.google.android.gms.permission.AD_ID" <<<"$MANIFEST"; then echo "FAIL: AD_ID permission is in the manifest"; exit 1; fi
 # Must be signed with the upload key (.secrets/rainbowkeys-upload.jks), never the debug key.
-# TODO: once the upload key exists, pin its SHA-256 here as File Manager does.
 APKSIGNER="$(ls -d "$HOME"/Android/Sdk/build-tools/*/ | tail -1)apksigner"
-CERTS="$("$APKSIGNER" verify --print-certs "$OUT/rainbowkeys-${VERSION/+/-}.apk")"
-if grep -qi "CN=Android Debug" <<<"$CERTS"; then echo "FAIL: APK is signed with the debug key"; exit 1; fi
+CERT="$("$APKSIGNER" verify --print-certs "$OUT/rainbowkeys-${VERSION/+/-}.apk" | grep -i 'SHA-256 digest')"
+grep -qi "efe44cd3ba873f6fdee90846ffdcea0d6ba54096c989b72d766a1dd77180e900" <<<"$CERT" \
+  || { echo "FAIL: APK is not signed with the upload key ($CERT)"; exit 1; }
 (cd android && ./gradlew --stop >/dev/null 2>&1 || true)
 echo "Release ready in $OUT"

@@ -19,4 +19,9 @@ Flutter Android toddler piano (package `com.homilabs.rainbowkeys`, Dart package 
 - tools.homilabs.org: card + privacy#rainbowkeys + terms#rainbowkeys live (uploaded over SSH
   `ssh -p 65002 u809141334@145.79.26.208`, root `domains/tools.homilabs.org/public_html`; fetch live pages and run
   `web/add_rainbowkeys.py` on them, never overwrite with the local copy).
-- Not done: AdMob app + banner unit, upload keystore, Play listing (Families programme, target age ≤5).
+- AdMob app + banner created (ids in docs/admob.md and `.secrets/ad-units.env`). Upload key
+  `.secrets/rainbowkeys-upload.jks` (password in `android/key.properties`, both gitignored; SHA-256 pinned in
+  `scripts/build_release.sh`). **Losing it blocks Play updates** — the local backup copies `.secrets/`.
+- Tested on Galaxy Tab S9 FE (Android 16): sound, all modes, gate, grown-ups, test banner. Android 16 ignores
+  our landscape request on tablets (targetSdk 36), so the layout must also work in portrait.
+- Not done: Play listing (Families programme, target age ≤5); then AdMob → app → Add store.

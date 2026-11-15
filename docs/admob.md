@@ -4,11 +4,12 @@ AdMob account: **homilabs.smc@gmail.com** (publisher `pub-2087846699268567`), sa
 
 | What | ID |
 |---|---|
-| App (Android) | not created yet |
-| Banner `rainbowkeys_grownups_banner` | not created yet |
+| App (Android) "Rainbow Keys: Toddler Piano" | `ca-app-pub-2087846699268567~4983468905` |
+| Banner `rainbowkeys_grownups_banner` | `ca-app-pub-2087846699268567/1248063019` |
 
-Until they exist, debug builds use Google's test ids and a plain release build is ad-free.
-Put the real ids in `.secrets/ad-units.env` (copy the `.example`); `scripts/build_release.sh` refuses test ids.
+Created 15 Nov 2026. Debug builds use Google's test ids; the real ids are in `.secrets/ad-units.env` (gitignored)
+and reach only builds made with `scripts/build_release.sh`, which refuses test ids. Test devices (labelled test
+ads even in release): Oppo Reno14 F, Galaxy Tab S9 FE — see `testDeviceIds` in `lib/ads/admob_ad_service.dart`.
 
 ## Rules for a toddler app (Google Play Families policy)
 - Only one placement: a **banner on the Grown-ups screen**, behind the hold-the-gear + sum parent gate.
@@ -21,5 +22,4 @@ Put the real ids in `.secrets/ad-units.env` (copy the `.example`); `scripts/buil
   programme; AdMob is a Families self-certified ad SDK.
 
 ## To do
-1. Create the AdMob app + banner unit (needs Homi's OK), fill `.secrets/ad-units.env`.
-2. After the Play listing is live: AdMob → app → **Add store**.
+1. After the Play listing is live: AdMob → app → **Add store**.
