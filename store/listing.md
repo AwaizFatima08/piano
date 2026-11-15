@@ -1,6 +1,6 @@
 # Play Store listing — Rainbow Keys (com.homilabs.rainbowkeys)
 
-Draft 15 Nov 2026.
+Submitted for review 15 Nov 2026 (Play app id 4971995499261122682, production 1.0.0 (1), all 178 countries).
 
 ## App name (max 30 characters)
 `Rainbow Keys: Toddler Piano`. The launcher label stays "Rainbow Keys".
@@ -37,7 +37,7 @@ SAFE AND SIMPLE
 Privacy policy: https://tools.homilabs.org/privacy#rainbowkeys
 
 ## Other fields
-- Category: Music (alt. Education) · Tags: Music, Kids
+- Category: Music & Audio
 - Contact email: homilabs.smc@gmail.com · Website: https://tools.homilabs.org/
 - Privacy policy URL: https://tools.homilabs.org/privacy#rainbowkeys
 - Graphics: `store/play-icon-512.png`, `store/feature-graphic-1024x500.png`, phone and tablet screenshots (16:9 JPEG, Play limit 8 MB) in
@@ -45,10 +45,13 @@ Privacy policy: https://tools.homilabs.org/privacy#rainbowkeys
 
 ## App content answers
 - Ads: Yes (Google AdMob, grown-ups screen only, child-directed)
-- Target audience: ages 5 and under (+ 6–8); the app is in the Families programme; appeal to children: yes
-- Content rating: no violence, no user interaction, no sharing; expected Everyone / PEGI 3
+- Target audience: 5 and under, 6–8 (Designed for Families); Teacher Approved review: requested
+- Sign-in details: no restricted parts (parent gate is a sum, not a login)
+- Content rating (IARC, All Other App Types, all answers No): ESRB Everyone, PEGI 3, USK 0, IARC 3+
+- Store listing: AI labels — none (icon is hand-written SVG, screenshots are real captures)
 - Advertising ID: No (permission removed; Families policy)
 - Data safety: collected and shared by the AdMob SDK only — approximate location (IP), app interactions,
   diagnostics, device or other IDs (app set ID); purposes advertising, analytics, fraud prevention; encrypted in
-  transit; no deletion request (no account). The app itself collects nothing.
+  transit; required (not optional), not ephemeral; no accounts; 'Committed to follow the Play Families policy' shown.
+  The app itself collects nothing.
 - Government / financial / health: No

@@ -24,4 +24,8 @@ Flutter Android toddler piano (package `com.homilabs.rainbowkeys`, Dart package 
   `scripts/build_release.sh`). **Losing it blocks Play updates** — the local backup copies `.secrets/`.
 - Tested on Galaxy Tab S9 FE (Android 16): sound, all modes, gate, grown-ups, test banner. Android 16 ignores
   our landscape request on tablets (targetSdk 36), so the layout must also work in portrait.
-- Not done: Play listing (Families programme, target age ≤5); then AdMob → app → Add store.
+- Play Console (Homilabs org account, app id 4971995499261122682): created and **sent for review 15 Nov 2026**
+  — production 1.0.0 (1), 178 countries, Music & Audio, target ages 5 and under + 6–8 (Designed for Families),
+  Teacher Approved review requested, content rating Everyone / PEGI 3. Answers recorded in `store/listing.md`.
+- After approval: AdMob → Rainbow Keys → Add store (Google Play); switch the tools.homilabs.org card from
+  "Coming soon" to the Play link.
