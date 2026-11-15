@@ -7,11 +7,11 @@ FONT=DejaVu-Sans-Bold
 
 inkscape ../assets/icon/icon.svg --export-type=png --export-width=512 --export-filename=play-icon-512.png >/dev/null 2>&1
 
-# Phone screenshots: 2400x1200 JPEG (Play allows at most 2:1 and 8 MB), caption on top.
+# Phone and tablet screenshots: 2400x1350 JPEG (Play needs 16:9, at most 8 MB), caption on top.
 caption() { # raw out text
-  convert -size 2400x1200 gradient:'#3A1A80-#14082E' \
-    \( "$1" -resize 2200x -bordercolor '#FFFFFF33' -border 4 \) -gravity south -geometry +0+40 -composite \
-    -font "$FONT" -pointsize 84 -fill white -gravity north -annotate +0+50 "$3" -alpha off -quality 88 "$2"
+  convert -size 2400x1350 gradient:'#3A1A80-#14082E' \
+    \( "$1" -resize 2200x -bordercolor '#FFFFFF33' -border 4 \) -gravity south -geometry +0+70 -composite \
+    -font "$FONT" -pointsize 84 -fill white -gravity north -annotate +0+90 "$3" -alpha off -quality 88 "$2"
 }
 caption raw/1-piano.png screenshots/01-piano.jpg  "Big rainbow keys and party lights"
 caption raw/2-drums.png screenshots/02-drums.jpg  "Bang the happy drum kit"
