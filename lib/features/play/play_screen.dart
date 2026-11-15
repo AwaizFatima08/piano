@@ -27,8 +27,7 @@ class _PlayScreenState extends State<PlayScreen> with TickerProviderStateMixin, 
   late final Settings settings = widget.services.settings;
   late final PlayLogic logic = PlayLogic(settings: settings, sound: widget.services.sound);
   late final Fx fx = Fx(this);
-  late final AnimationController pulse = AnimationController(vsync: this, duration: const Duration(milliseconds: 1300))
-    ..repeat();
+  late final AnimationController pulse = AnimationController(vsync: this, duration: const Duration(milliseconds: 1300));
   late final AnimationController yay = AnimationController(vsync: this, duration: const Duration(milliseconds: 1900));
   final _stackKey = GlobalKey();
   final _keyboardKey = GlobalKey<KeyboardState>();
@@ -58,6 +57,7 @@ class _PlayScreenState extends State<PlayScreen> with TickerProviderStateMixin, 
     logic.onAutoNote = _light;
     _onSettings();
     logic.reset();
+    _syncPulse();
   }
 
   @override
@@ -78,7 +78,21 @@ class _PlayScreenState extends State<PlayScreen> with TickerProviderStateMixin, 
     if (state == AppLifecycleState.resumed) _applyAwake();
   }
 
-  void _rebuild() => setState(() {});
+  void _rebuild() {
+    _syncPulse();
+    setState(() {});
+  }
+
+  /// The glow pulse repaints every key each frame, so it only runs while a key
+  /// is actually shining (songs hint, find-it target).
+  void _syncPulse() {
+    final shining = logic.hintKey != null || logic.targetKey != null;
+    if (shining && !pulse.isAnimating) {
+      pulse.repeat();
+    } else if (!shining && pulse.isAnimating) {
+      pulse.stop();
+    }
+  }
 
   void _onSettings() {
     widget.services.sound.volume = settings.effectiveVolume;

@@ -68,6 +68,7 @@ class AdMobAdService implements AdService {
       );
       await done.future.timeout(const Duration(seconds: 20), onTimeout: () {});
       _canRequest = await ConsentInformation.instance.canRequestAds();
+      debugPrint('[ads] consent done, canRequestAds=$_canRequest');
       if (!_canRequest) return;
       await MobileAds.instance.updateRequestConfiguration(
         RequestConfiguration(
@@ -76,7 +77,8 @@ class AdMobAdService implements AdService {
           testDeviceIds: testDeviceIds,
         ),
       );
-      await MobileAds.instance.initialize();
+      final status = await MobileAds.instance.initialize();
+      debugPrint('[ads] SDK started: ${status.adapterStatuses.length} adapters');
     } on Object catch (e) {
       debugPrint('[ads] init failed: $e');
       _canRequest = false;
@@ -147,6 +149,7 @@ class _BannerSlotState extends State<_BannerSlot> {
       request: const AdRequest(nonPersonalizedAds: true),
       listener: BannerAdListener(
         onAdLoaded: (_) {
+          debugPrint('[ads] banner loaded');
           if (mounted) setState(() => _loaded = true);
         },
         onAdFailedToLoad: (a, e) {
