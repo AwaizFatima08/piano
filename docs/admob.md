@@ -10,6 +10,9 @@ AdMob account: **homilabs.smc@gmail.com** (publisher `pub-2087846699268567`), sa
 Created 15 Nov 2026. Debug builds use Google's test ids; the real ids are in `.secrets/ad-units.env` (gitignored)
 and reach only builds made with `scripts/build_release.sh`, which refuses test ids. Test devices (labelled test
 ads even in release): Oppo Reno14 F, Galaxy Tab S9 FE — see `testDeviceIds` in `lib/ads/admob_ad_service.dart`.
+**Caveat:** without the AD_ID permission the SDK's hashed device id changes when the app is reinstalled
+(Tab S9 was `84F0…` on the debug install, `516B…` on the release install), so the list does not reliably cover a
+release build. When testing a release APK on our own devices, open Grown-ups rarely and never tap the ad.
 
 ## Rules for a toddler app (Google Play Families policy)
 - Only one placement: a **banner on the Grown-ups screen**, behind the hold-the-gear + sum parent gate.
