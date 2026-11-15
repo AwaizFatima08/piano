@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+<polygon points="700.0,248.0 713.8,281.1 749.5,283.9 722.3,307.2 730.6,342.1 700.0,323.4 669.4,342.1 677.7,307.2 650.5,283.9 686.2,281.1" fill="#FFE45C"/><polygon points="330.0,290.0 337.4,307.8 356.6,309.3 342.0,321.9 346.5,340.7 330.0,330.6 313.5,340.7 318.0,321.9 303.4,309.3 322.6,307.8" fill="#FFFFFF"/>
+<rect x="282.0" y="404.0" width="80.0" height="360.0" rx="25.6" fill="#000" opacity=".28"/>
+<rect x="282.0" y="390.0" width="80.0" height="360.0" rx="25.6" fill="#FF4F6D"/>
+<rect x="296.4" y="415.2" width="51.2" height="115.2" rx="24.0" fill="#fff" opacity=".35"/>
+<circle cx="322.0" cy="678.0" r="12.8" fill="#fff" opacity=".9"/>
+<rect x="377.0" y="404.0" width="80.0" height="360.0" rx="25.6" fill="#000" opacity=".28"/>
+<rect x="377.0" y="390.0" width="80.0" height="360.0" rx="25.6" fill="#FF8A3D"/>
+<rect x="391.4" y="415.2" width="51.2" height="115.2" rx="24.0" fill="#fff" opacity=".35"/>
+<circle cx="417.0" cy="678.0" r="12.8" fill="#fff" opacity=".9"/>
+<rect x="472.0" y="404.0" width="80.0" height="360.0" rx="25.6" fill="#000" opacity=".28"/>
+<rect x="472.0" y="390.0" width="80.0" height="360.0" rx="25.6" fill="#FFD23F"/>
+<rect x="486.4" y="415.2" width="51.2" height="115.2" rx="24.0" fill="#fff" opacity=".35"/>
+<circle cx="512.0" cy="678.0" r="12.8" fill="#fff" opacity=".9"/>
+<rect x="567.0" y="404.0" width="80.0" height="360.0" rx="25.6" fill="#000" opacity=".28"/>
+<rect x="567.0" y="390.0" width="80.0" height="360.0" rx="25.6" fill="#4CD964"/>
+<rect x="581.4" y="415.2" width="51.2" height="115.2" rx="24.0" fill="#fff" opacity=".35"/>
+<circle cx="607.0" cy="678.0" r="12.8" fill="#fff" opacity=".9"/>
+<rect x="662.0" y="404.0" width="80.0" height="360.0" rx="25.6" fill="#000" opacity=".28"/>
+<rect x="662.0" y="390.0" width="80.0" height="360.0" rx="25.6" fill="#3D8BFF"/>
+<rect x="676.4" y="415.2" width="51.2" height="115.2" rx="24.0" fill="#fff" opacity=".35"/>
+<circle cx="702.0" cy="678.0" r="12.8" fill="#fff" opacity=".9"/>
+</svg>
