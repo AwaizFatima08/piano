@@ -17,7 +17,7 @@ caption raw/1-piano.png screenshots/01-piano.jpg  "Big rainbow keys and party li
 caption raw/2-drums.png screenshots/02-drums.jpg  "Bang the happy drum kit"
 caption raw/3-silly.png screenshots/03-silly.jpg  "Boing, quack, zap: silly sounds!"
 caption raw/4-songs.png screenshots/04-songs.jpg  "Magic songs: any key plays the tune"
-caption raw/5-find.png  screenshots/05-find.png   "Find the shining key, win stars"
+caption raw/5-find.png  screenshots/05-find.jpg   "Find the shining key, win stars"
 
 # Feature graphic 1024x500: title left, the keyboard on the right.
 convert -size 1024x500 gradient:'#3A1A80-#14082E' \

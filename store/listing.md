@@ -40,7 +40,7 @@ Privacy policy: https://tools.homilabs.org/privacy#rainbowkeys
 - Category: Music (alt. Education) · Tags: Music, Kids
 - Contact email: homilabs.smc@gmail.com · Website: https://tools.homilabs.org/
 - Privacy policy URL: https://tools.homilabs.org/privacy#rainbowkeys
-- Graphics: `store/play-icon-512.png`, `store/feature-graphic-1024x500.png`, phone screenshots in
+- Graphics: `store/play-icon-512.png`, `store/feature-graphic-1024x500.png`, phone screenshots (JPEG, Play limit 8 MB) in
   `store/screenshots/` (regenerate with `store/make_store.sh` from `store/raw/`)
 
 ## App content answers
