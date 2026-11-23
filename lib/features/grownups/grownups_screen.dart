@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../ads/ads.dart';
 import '../../app/services.dart';
+import 'more_apps.dart';
 
 /// Settings for parents. Reached only through the gear + parent gate. The
 /// app's only ad (a banner) lives here, never on the play screen.
@@ -120,6 +121,22 @@ class _GrownupsScreenState extends State<GrownupsScreen> {
                     trailing: const Icon(Icons.open_in_new),
                     onTap: () => _open(kTermsUrl),
                   ),
+                  ListTile(
+                    key: const Key('rate-app'),
+                    leading: const Icon(Icons.star_outline),
+                    title: const Text('Rate this app on Google Play'),
+                    trailing: const Icon(Icons.open_in_new),
+                    onTap: () => _open(playLink(ownPackage)),
+                  ),
+                  ListTile(
+                    title: Text('More from HomiLabs', style: Theme.of(context).textTheme.titleMedium),
+                  ),
+                  for (final app in moreApps)
+                    ListTile(
+                      title: Text(app.name),
+                      trailing: const Icon(Icons.open_in_new),
+                      onTap: () => _open(playLink(app.package)),
+                    ),
                   if (_privacyOptions)
                     ListTile(
                       title: const Text('Ad privacy options'),

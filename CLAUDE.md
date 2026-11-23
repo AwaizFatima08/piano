@@ -29,3 +29,7 @@ Flutter Android toddler piano (package `com.homilabs.rainbowkeys`, Dart package 
   Teacher Approved review requested, content rating Everyone / PEGI 3. Answers recorded in `store/listing.md`.
 - After approval: AdMob → Rainbow Keys → Add store (Google Play); switch the tools.homilabs.org card from
   "Coming soon" to the Play link.
+- **v1.0.1 (versionCode 2) built 23 Nov 2026**: Grown-ups screen (behind the existing parent gate) gets "Rate this
+  app on Google Play" and "More from HomiLabs" (Tiny Tunes Studio, TalkyPals, Bumper Buddies; tagged links in
+  `lib/features/grownups/more_apps.dart`). No in-app review prompt. AAB `releases/v1.0.1-2/`, copy in
+  `play-uploads/2026-11-23-kids/04-rainbowkeys/`. Not uploaded yet.

@@ -13,6 +13,6 @@ class Services {
   final AdService ads;
 }
 
-const kAppVersion = '1.0.0';
+const kAppVersion = '1.0.1';
 const kPrivacyUrl = 'https://tools.homilabs.org/privacy#rainbowkeys';
 const kTermsUrl = 'https://tools.homilabs.org/terms#rainbowkeys';

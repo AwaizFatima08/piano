@@ -2,7 +2,7 @@ name: rainbow_keys
 description: "Rainbow Keys by HomiLabs: a bright, flashing toddler piano with drums, silly sounds, songs and a find-the-key game."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: ^3.11.5
